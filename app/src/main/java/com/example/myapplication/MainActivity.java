@@ -91,12 +91,12 @@ public class MainActivity extends AppCompatActivity {
         int width = bitmap.getWidth();
         int height = bitmap.getHeight();
         // 原图与倒影间距
-        int space = 2;
+        int space = 1;
 
         // 取原图下半部分，垂直翻转作为倒影
         Matrix matrix = new Matrix();
         matrix.setScale(1, -1);
-        Bitmap reflectionPic = Bitmap.createBitmap(bitmap, 0, height * 4 / 5, width, height / 6, matrix, false);
+        Bitmap reflectionPic = Bitmap.createBitmap(bitmap, 0, height * 7 / 8, width, height / 10, matrix, false);
 
         // 创建合成画布：宽度=原图宽，高度=原图高 + 半高倒影 + 渐变空间
         Bitmap result = Bitmap.createBitmap(width, height + height / 7, Bitmap.Config.ARGB_8888);
@@ -109,8 +109,9 @@ public class MainActivity extends AppCompatActivity {
 
         // 倒影渐变遮罩
         Paint paint = new Paint();
+        // Color.argb(A, R, G, B) — A 倒影透明度
         LinearGradient linearGradient = new LinearGradient(0, height + space, 0,
-                result.getHeight(), Color.BLACK, Color.TRANSPARENT, Shader.TileMode.MIRROR);
+                result.getHeight(), Color.argb(130, 0, 0, 0), Color.TRANSPARENT, Shader.TileMode.MIRROR);
         paint.setShader(linearGradient);
         paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_IN));
         canvas.drawRect(0, height, width, result.getHeight() + space, paint);
