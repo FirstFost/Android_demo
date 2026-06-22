@@ -98,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
         matrix.setScale(1, -1);
         Bitmap reflectionPic = Bitmap.createBitmap(bitmap, 0, height * 7 / 8, width, height / 10, matrix, false);
 
-        // 创建合成画布：宽度=原图宽，高度=原图高 + 半高倒影 + 渐变空间
+        // 创建合成画布：宽度=原图宽，高度=原图高 + 1/7高倒影
         Bitmap result = Bitmap.createBitmap(width, height + height / 7, Bitmap.Config.ARGB_8888);
         Canvas canvas = new Canvas(result);
 
@@ -121,20 +121,20 @@ public class MainActivity extends AppCompatActivity {
 
     private List<AppModel> getSquareApps() {
         List<AppModel> list = new ArrayList<>();
-        list.add(new AppModel("NETFLIX", R.drawable.netflix, AppModel.Type.SQUARE));
-        list.add(new AppModel("YouTube", R.drawable.youtube, AppModel.Type.SQUARE));
-        list.add(new AppModel("Google Play", R.drawable.google_play, AppModel.Type.SQUARE));
-        list.add(new AppModel("Chrome", R.drawable.chrome, AppModel.Type.SQUARE));
+        list.add(new AppModel("NETFLIX", R.drawable.netflix));
+        list.add(new AppModel("YouTube", R.drawable.youtube));
+        list.add(new AppModel("Google Play", R.drawable.google_play));
+        list.add(new AppModel("Chrome", R.drawable.chrome));
         return list;
     }
 
     private List<AppModel> getRectApps() {
         List<AppModel> list = new ArrayList<>();
-        list.add(new AppModel("Keystone", R.drawable.keystone, AppModel.Type.RECT));
-        list.add(new AppModel("Miracast", R.drawable.miracast, AppModel.Type.RECT));
-        list.add(new AppModel("Signal Source", R.drawable.signal_source, AppModel.Type.RECT));
-        list.add(new AppModel("My Apps", R.drawable.my_apps, AppModel.Type.RECT));
-        list.add(new AppModel("Settings", R.drawable.settings, AppModel.Type.RECT));
+        list.add(new AppModel("Keystone", R.drawable.keystone));
+        list.add(new AppModel("Miracast", R.drawable.miracast));
+        list.add(new AppModel("Signal Source", R.drawable.signal_source));
+        list.add(new AppModel("My Apps", R.drawable.my_apps));
+        list.add(new AppModel("Settings", R.drawable.settings));
         return list;
     }
 }
